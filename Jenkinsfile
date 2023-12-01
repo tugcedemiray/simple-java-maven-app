@@ -7,7 +7,9 @@ pipeline {
 
     stages {
         stage('Checkout') {
-            echo 'Source code is cloned'
+            steps {
+                echo 'Source code is cloned'
+            }
         }
         stage('SonarQube Analysis') {
             steps {
