@@ -6,11 +6,6 @@ pipeline {
     }
 
     stages {
-        stage('Checkout') {
-            steps {
-                echo 'Source code is cloned'
-            }
-        }
         stage('SonarQube Analysis') {
             steps {
                 withSonarQubeEnv('sonar-server') {
