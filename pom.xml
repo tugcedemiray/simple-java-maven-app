@@ -4,7 +4,7 @@
     <modelVersion>4.0.0</modelVersion>
     <groupId>com.mycompany.app</groupId>
     <artifactId>my-app</artifactId>
-    <packaging>jar</packaging> <!-- Updated packaging to "war" -->
+    <packaging>war</packaging> <!-- Updated packaging to "war" -->
     <version>1.0-SNAPSHOT</version>
     <name>my-app</name>
     <url>https://maven.apache.org</url>
@@ -33,8 +33,9 @@
             </plugins>
         </pluginManagement>
         <plugins>
+            <!-- Remove the maven-jar-plugin since it's for JAR packaging -->
+            <!--
             <plugin>
-                <!-- Build an executable JAR -->
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-jar-plugin</artifactId>
                 <version>3.3.0</version>
@@ -48,34 +49,24 @@
                     </archive>
                 </configuration>
             </plugin>
+            -->
+            <!-- Add the maven-war-plugin for WAR packaging -->
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-enforcer-plugin</artifactId>
-                <version>3.2.1</version>
-                <executions>
-                    <execution>
-                        <id>enforce-maven</id>
-                        <goals>
-                            <goal>enforce</goal>
-                        </goals>
-                        <configuration>
-                            <rules>
-                                <requireMavenVersion>
-                                    <version>[3.8.6,)</version>
-                                </requireMavenVersion>
-                                <requireJavaVersion>
-                                    <version>[11,)</version>
-                                </requireJavaVersion>
-                            </rules>
-                        </configuration>
-                    </execution>
-                </executions>
+                <artifactId>maven-war-plugin</artifactId>
+                <version>3.4.0</version> <!-- Use an appropriate version -->
+                <configuration>
+                    <failOnMissingWebXml>false</failOnMissingWebXml>
+                </configuration>
             </plugin>
+
+            <!-- ... existing configuration ... -->
+
             <!-- Jacoco Plugin -->
             <plugin>
                 <groupId>org.jacoco</groupId>
                 <artifactId>jacoco-maven-plugin</artifactId>
-                <version>0.8.7</version>
+                <version>0.8.11</version>
                 <executions>
                     <execution>
                         <goals>
@@ -90,7 +81,7 @@
                         </goals>
                     </execution>
                 </executions>
-                <!-- XML raporu oluşturmak için ek konfigürasyon -->
+                <!-- Configuration for generating XML report -->
                 <configuration>
                     <outputDirectory>target</outputDirectory>
                     <!-- <output>jacoco.xml</output> -->
