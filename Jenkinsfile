@@ -46,10 +46,10 @@ pipeline {
         }
         stage('Deploy Application') {
             steps {
-        	    sh "docker stop hello_world | true"
-        	    sh "docker rm hello_world | true"
-        	    sh "docker run --name hello_world -d -p 8050:8080 ${env.DockerRepository}:v${BUILD_NUMBER}"
-        	}
+                sh "docker stop hello_world | true"
+                sh "docker rm hello_world | true"
+                sh "docker run --name hello_world -d -p 8050:8080 ${env.DockerRepository}:v${BUILD_NUMBER}"
+            }
         }
     }
 }
