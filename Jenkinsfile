@@ -41,7 +41,7 @@ pipeline {
             steps{
                 withCredentials([usernameColonPassword(credentialsId: 'docker', variable: 'DOCKER_PASS')]) {
                     sh "docker push ${env.DockerRepository}:v${BUILD_NUMBER}"
-        		}
+                }
             }
         }
         stage('Deploy Application') {
