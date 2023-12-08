@@ -18,7 +18,7 @@ public class HelloworldApplication {
 	public String helloWorld()
 	{
 
-		return "Hello world working as expected with tomcat and docker deployment";
+		return "Hello world working as expected with tomcat and docker deployment!";
 	}
 
 }

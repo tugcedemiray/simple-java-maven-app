@@ -9,16 +9,16 @@ pipeline {
     stages {
         stage('Build') {
             steps {
-                sh '${MAVEN_HOME}/bin/mvn clean install'
+                sh "${MAVEN_HOME}/bin/mvn clean install"
             }
         }
         stage('SonarQube Analysis') {
             steps {
                 withSonarQubeEnv('sonar-server') {
-                    sh '${MAVEN_HOME}/bin/mvn sonar:sonar ' +
-                       '-Dsonar.projectKey=simple-java-maven-app ' +
-                       '-Dsonar.projectName=Java_Maven_App ' +
-                       '-Dsonar.coverage.jacoco.xmlReportPaths=**/jacoco.xml'
+                    sh "${MAVEN_HOME}/bin/mvn sonar:sonar " +
+                       "-Dsonar.projectKey=simple-java-maven-app " +
+                       "-Dsonar.projectName=Java_Maven_App " +
+                       "-Dsonar.coverage.jacoco.xmlReportPaths=**/jacoco.xml"
                 }
             }
         }
@@ -32,19 +32,19 @@ pipeline {
                 }
             }
         }
-        stage('Build Docker Images') {
+        stage('Build Docker Image') {
             steps {
                 sh "docker build -t ${env.DockerRepository}:v${BUILD_NUMBER} ."
             }
         }
-        stage('Push Docker Image to Dockerhub'){
+        stage('Push Docker Image to Dockerhub') {
             steps{
                 withCredentials([usernameColonPassword(credentialsId: 'docker', variable: 'DOCKER_PASS')]) {
         		    sh "docker push ${env.DockerRepository}:v${BUILD_NUMBER}"
         		}
             }
         }
-        stage('Deploy Application'){
+        stage('Deploy Application') {
             steps {
         	    sh "docker stop hello_world | true"
                 sh "docker rm hello_world | true"
