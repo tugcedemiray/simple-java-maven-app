@@ -11,7 +11,7 @@ pipeline {
                 withSonarQubeEnv('sonar-server') {
                     sh '${MAVEN_HOME}/bin/mvn clean verify sonar:sonar ' +
                        '-Dsonar.projectKey=simple-java-maven-app ' +
-                       '-Dsonar.projectName=Maven_App ' +
+                       '-Dsonar.projectName=Java_Maven_App ' +
                        '-Dsonar.sources=src/main ' +
                        '-Dsonar.sourceEncoding=UTF-8 ' +
                        '-Dsonar.language=java ' +
