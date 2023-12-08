@@ -4,6 +4,7 @@ pipeline {
         stage('Build') {
             steps {
                 echo "Build.."
+                echo "Jenkins automatic trigger test"
             }
         }
     }
