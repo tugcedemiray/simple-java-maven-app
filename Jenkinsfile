@@ -1,10 +1,12 @@
 pipeline {
     agent any
+    environment {
+        MAVEN_HOME = tool 'maven-3.9.5'
+    }
     stages {
-        stage('Build') {
+        stage('Maven Build & Unit Test') {
             steps {
-                echo "Build.."
-                echo "Jenkins automatic trigger test"
+                sh "${MAVEN_HOME}/bin/mvn clean install"
             }
         }
     }
