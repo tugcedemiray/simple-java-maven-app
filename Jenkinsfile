@@ -16,7 +16,7 @@ pipeline {
                        '-Dsonar.sourceEncoding=UTF-8 ' +
                        '-Dsonar.language=java ' +
                        '-Dsonar.java.binaries=target/classes ' +
-                       '-Dsonar.coverage.jacoco.xmlReportPaths=target/jacoco.xml'
+                       '-Dsonar.coverage.jacoco.xmlReportPaths=**/jacoco.xml'
                 }
             }
         }
