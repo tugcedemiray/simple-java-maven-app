@@ -1,16 +1,11 @@
-# simple-java-maven-app
+Simple Spring Boot Maven Project developed in Jenkins Declarative Pipeline
 
-This repository is for the
-[Build a Java app with Maven](https://jenkins.io/doc/tutorials/build-a-java-app-with-maven/)
-tutorial in the [Jenkins User Documentation](https://jenkins.io/doc/).
+DevOps Tools Used
 
-The repository contains a simple Java application which outputs the string
-"Hello world!" and is accompanied by a couple of unit tests to check that the
-main application works as expected. The results of these tests are saved to a
-JUnit XML report.
+Git Maven Jenkins Tomcat Docker
 
+Access to the tomcat after successfully deploying:
 
-The `jenkins` directory contains an example of the `Jenkinsfile` (i.e. Pipeline)
-you'll be creating yourself during the tutorial and the `jenkins/scripts` subdirectory
-contains a shell script with commands that are executed when Jenkins processes
-the "Deliver" stage of your Pipeline.
+Ex: http://awsip:8050/helloworld-0.0.1-SNAPSHOT/hello
+
+Note: Tomcat was made to access in the port 8050. It was changed in the Dockerfile's RUN command.
