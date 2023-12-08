@@ -12,10 +12,6 @@ pipeline {
                     sh '${MAVEN_HOME}/bin/mvn clean verify sonar:sonar ' +
                        '-Dsonar.projectKey=simple-java-maven-app ' +
                        '-Dsonar.projectName=Java_Maven_App ' +
-                       '-Dsonar.sources=src/main ' +
-                       '-Dsonar.sourceEncoding=UTF-8 ' +
-                       '-Dsonar.language=java ' +
-                       '-Dsonar.java.binaries=target/classes ' +
                        '-Dsonar.coverage.jacoco.xmlReportPaths=**/jacoco.xml'
                 }
             }
