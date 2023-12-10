@@ -54,8 +54,8 @@ pipeline {
         stage('Test') {
             steps {
                 script {
-                    sh 'javac -cp lib/* src/test/java/com/example/helloworld/CheckIPAccessibility.java'
-                    sh 'java -cp .:lib/* src/test/java/com/example/helloworld/CheckIPAccessibility'
+                    sh 'javac -cp lib/* com/example/helloworld/CheckIPAccessibility.java'
+                    sh 'java -cp .:lib/* com/example/helloworld/CheckIPAccessibility'
                 }
             }
         }
