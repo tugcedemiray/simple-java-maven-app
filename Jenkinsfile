@@ -4,7 +4,7 @@ pipeline {
         MAVEN_HOME = tool 'maven-3.9.5'
         DOCKER_IMAGE_NAME = 'tugceerkaner/simple-java-maven-app'
         REMOTE_USER = 'root'
-        REMOTE_HOST = '20.151.230.61'
+        REMOTE_HOST = '20.104.209.198'
     }
     stages {
         stage('Maven Build & Unit Test') {
