@@ -51,6 +51,14 @@ pipeline {
                 sh "docker run --name hello_world_app -d -p 8050:8080 ${env.DOCKER_IMAGE_NAME}:v${BUILD_NUMBER}"
             }
         }
+        stage('Test') {
+            steps {
+                script {
+                    sh 'javac -cp lib/* src/test/java/com/example/helloworld/CheckIPAccessibility.java'
+                    sh 'java -cp .:lib/* src/test/java/com/example/helloworld/CheckIPAccessibility'
+                }
+            }
+        }
         stage('Docker Pull on Second VM') {
             steps {
                 script {
