@@ -5,6 +5,7 @@ pipeline {
         DOCKER_IMAGE_NAME = 'tugceerkaner/simple-java-maven-app'
         REMOTE_USER = 'root'
         REMOTE_HOST = '20.104.209.198'
+        TEST_REPO_URL = 'https://github.com/tugcedemiray/simple-java-maven-app-test.git'
     }
     stages {
         stage('Maven Build & Unit Test') {
@@ -51,11 +52,16 @@ pipeline {
                 sh "docker run --name hello_world_app -d -p 8050:8080 ${env.DOCKER_IMAGE_NAME}:v${BUILD_NUMBER}"
             }
         }
+        stage('Clone Test Repository') {
+            steps {
+                git url: "${env.TEST_REPO_URL}"
+            }
+        }
         stage('Test') {
             steps {
                 script {
-                    sh 'javac -cp lib/* com/example/helloworld/CheckIPAccessibility.java'
-                    sh 'java -cp .:lib/* com/example/helloworld/CheckIPAccessibility'
+                    sh 'javac -cp lib/* CheckIPAccessibility.java'
+                    sh 'java -cp .:lib/* CheckIPAccessibility'
                 }
             }
         }
